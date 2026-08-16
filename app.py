@@ -179,17 +179,17 @@ if uploaded_file is not None:
     components.html(
         """
         <script>
-            // On mobile, Streamlit closes the sidebar when the ESC key is pressed
-            const evt = new KeyboardEvent('keydown', { 'key': 'Escape', 'keyCode': 27, 'which': 27, 'bubbles': true });
-            window.parent.document.dispatchEvent(evt);
-            
-            // Fallback: look for the X close button specifically used on mobile
-            const buttons = window.parent.document.querySelectorAll('button');
-            buttons.forEach(btn => {
-                if(btn.innerHTML.includes('svg') && btn.getAttribute('kind') === 'header') {
-                    btn.click();
-                }
-            });
+            // Targeted mobile sidebar close
+            const sidebar = window.parent.document.querySelector('[data-testid="stSidebar"]');
+            if(sidebar) {
+                const buttons = sidebar.querySelectorAll('button');
+                buttons.forEach(btn => {
+                    // Click the close button but DO NOT click the 'remove file' button
+                    if(btn.innerHTML.includes('svg') && !btn.innerText.trim() && !btn.closest('[data-testid="stFileUploader"]')) {
+                        btn.click();
+                    }
+                });
+            }
         </script>
         """, height=0
     )
@@ -310,7 +310,7 @@ with tab_jobs:
         margin=dict(t=40, b=10, l=10, r=10)
     )
     fig_bar.update_traces(texttemplate='%{text}%', textposition='auto')
-    st.plotly_chart(fig_bar, use_container_width=True)
+    st.plotly_chart(fig_bar, use_container_width=True, config={'displayModeBar': False})
 
     for _, row in top_matches.iterrows():
         with st.expander(f"{row['job_title']} — {row['match_pct']}% match"):
