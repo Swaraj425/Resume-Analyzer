@@ -174,6 +174,26 @@ top_n = st.sidebar.slider("Number of job recommendations to show", 3, 10, 5)
 
 st.title("AI Resume Analyzer & Job Recommendation System")
 
+if uploaded_file is not None:
+    import streamlit.components.v1 as components
+    components.html(
+        """
+        <script>
+            // On mobile, Streamlit closes the sidebar when the ESC key is pressed
+            const evt = new KeyboardEvent('keydown', { 'key': 'Escape', 'keyCode': 27, 'which': 27, 'bubbles': true });
+            window.parent.document.dispatchEvent(evt);
+            
+            // Fallback: look for the X close button specifically used on mobile
+            const buttons = window.parent.document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                if(btn.innerHTML.includes('svg') && btn.getAttribute('kind') === 'header') {
+                    btn.click();
+                }
+            });
+        </script>
+        """, height=0
+    )
+
 if uploaded_file is None:
     st.info("👈 Upload a resume from the sidebar to get started.")
     st.markdown("#### Available job roles in this demo dataset")
@@ -281,14 +301,15 @@ with tab_jobs:
         color_continuous_scale="Purples"
     )
     fig_bar.update_layout(
+        height=450,
         plot_bgcolor="rgba(0,0,0,0)", 
         paper_bgcolor="rgba(0,0,0,0)",
         font_family="Inter",
         xaxis_visible=False,
         coloraxis_showscale=False,
-        margin=dict(t=40, b=10, l=10, r=30)
+        margin=dict(t=40, b=10, l=10, r=10)
     )
-    fig_bar.update_traces(texttemplate='%{text}%', textposition='outside')
+    fig_bar.update_traces(texttemplate='%{text}%', textposition='auto')
     st.plotly_chart(fig_bar, use_container_width=True)
 
     for _, row in top_matches.iterrows():
