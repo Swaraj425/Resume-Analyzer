@@ -1,0 +1,11 @@
+job_title,description,required_skills
+Python Developer,"We are looking for a Python Developer skilled in building backend systems, REST APIs, and working with databases. Experience with Flask or Django is a plus.","python,sql,flask,django,rest api,git,mysql"
+Data Analyst,"Seeking a Data Analyst to clean, analyze and visualize data, build dashboards and report insights to stakeholders using SQL and Python.","sql,python,pandas,excel,data visualization,power bi,statistics"
+ML Intern,"Machine Learning Intern to help build and evaluate ML models, work with pandas/numpy, and support NLP and computer vision projects.","python,machine learning,pandas,numpy,scikit-learn,nlp,statistics"
+Web Developer,"Front-end/back-end web developer needed to build responsive websites and web apps using HTML, CSS, JavaScript and a modern framework.","html,css,javascript,react,node.js,git,rest api"
+Data Scientist,"Data Scientist role focused on predictive modeling, deep learning, and translating business problems into ML solutions.","python,machine learning,deep learning,tensorflow,pandas,numpy,statistics,sql"
+Backend Developer,"Backend developer to design and maintain scalable APIs and services, working with SQL/NoSQL databases and cloud deployment.","python,java,sql,mongodb,docker,aws,git"
+AI Engineer,"AI Engineer to build, fine-tune and deploy machine learning and deep learning models, including NLP and LLM-based applications.","python,machine learning,deep learning,nlp,pytorch,transformers,docker"
+Business Analyst,"Business Analyst to gather requirements, analyze data trends and present findings using Excel, SQL and visualization tools.","excel,sql,data analysis,power bi,statistics,communication"
+DevOps Engineer,"DevOps engineer to manage CI/CD pipelines, containerization and cloud infrastructure for scalable deployments.","docker,kubernetes,aws,linux,ci/cd,git,jenkins"
+Frontend Developer,"Frontend developer to build modern, responsive user interfaces using React and REST APIs.","html,css,javascript,react,rest api,git"
